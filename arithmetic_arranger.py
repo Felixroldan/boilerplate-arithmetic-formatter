@@ -24,6 +24,9 @@ def arithmetic_arranger(problems, showresult = False):
     res = ''
     sep =''
     for p in problemsAsList:
+        maxL = len(p[0])
+        if len(p[2]) > len(p[0]):
+            maxL = len(p[2])
         if len(p[0]) < 5:
             nums += (p[0].rjust(6,' '))+('    ')
         else:
@@ -34,7 +37,8 @@ def arithmetic_arranger(problems, showresult = False):
         else:
             return 'Error: Numbers cannot be more than four digits'
         #ops += (p[1])
-        sep += '______    '
-        res += (p[3].rjust(6,' '))+('    ')
+        print(maxL)
+        sep += '    '.rjust(maxL+2,'-')
+        res += (p[3].rjust(maxL+2,' '))+('    ')
     arranged_problems = f"{nums}\n{dens}\n{sep}\n{res}" if showresult else f"{nums}\n{dens}\n{sep}"
     return arranged_problems
